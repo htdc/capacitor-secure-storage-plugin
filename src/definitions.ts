@@ -1,8 +1,20 @@
+/** @format */
+
 export interface SecureStoragePluginPlugin {
-  get(options: { key: string }): Promise<{ value: string }>;
-  set(options: { key: string; value: string }): Promise<{ value: boolean }>;
-  remove(options: { key: string }): Promise<{ value: boolean }>;
-  clear(): Promise<{ value: boolean }>;
-  keys(): Promise<{ value: string[] }>;
+  get(options: {
+    serviceKey?: string;
+    key: string;
+  }): Promise<{ value: string }>;
+  set(options: {
+    serviceKey?: string;
+    key: string;
+    value: string;
+  }): Promise<{ value: boolean }>;
+  remove(options: {
+    serviceKey?: string;
+    key: string;
+  }): Promise<{ value: boolean }>;
+  clear(options: { serviceKey?: string }): Promise<{ value: boolean }>;
+  keys(options: { serviceKey?: string }): Promise<{ value: string[] }>;
   getPlatform(): Promise<{ value: string }>;
 }
