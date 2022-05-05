@@ -9,7 +9,7 @@ import SwiftKeychainWrapper
 @objc(SecureStoragePlugin)
 public class SecureStoragePlugin: CAPPlugin {    
     @objc func set(_ call: CAPPluginCall) {
-        let serviceName = call.getString("serviceName") ?? "cap_sec"
+        let serviceName = call.getString("serviceKey") ?? "cap_sec"
         let keychainwrapper: KeychainWrapper = KeychainWrapper.init(serviceName: serviceName)
 
         let key = call.getString("key") ?? ""
@@ -26,7 +26,7 @@ public class SecureStoragePlugin: CAPPlugin {
     }
     
     @objc func get(_ call: CAPPluginCall) {
-        let serviceName = call.getString("serviceName") ?? "cap_sec"
+        let serviceName = call.getString("serviceKey") ?? "cap_sec"
         let keychainwrapper: KeychainWrapper = KeychainWrapper.init(serviceName: serviceName)
 
         let key = call.getString("key") ?? ""
@@ -56,7 +56,7 @@ public class SecureStoragePlugin: CAPPlugin {
     }
     
     @objc func keys(_ call: CAPPluginCall) {
-        let serviceName = call.getString("serviceName") ?? "cap_sec"
+        let serviceName = call.getString("serviceKey") ?? "cap_sec"
         let keychainwrapper: KeychainWrapper = KeychainWrapper.init(serviceName: serviceName)
         
         let keys = keychainwrapper.allKeys();
@@ -66,7 +66,7 @@ public class SecureStoragePlugin: CAPPlugin {
     }
     
     @objc func remove(_ call: CAPPluginCall) {
-        let serviceName = call.getString("serviceName") ?? "cap_sec"
+        let serviceName = call.getString("serviceKey") ?? "cap_sec"
         let keychainwrapper: KeychainWrapper = KeychainWrapper.init(serviceName: serviceName)
 
         let key = call.getString("key") ?? ""
@@ -83,7 +83,7 @@ public class SecureStoragePlugin: CAPPlugin {
     }
     
     @objc func clear(_ call: CAPPluginCall) {
-        let serviceName = call.getString("serviceName") ?? "cap_sec"
+        let serviceName = call.getString("serviceKey") ?? "cap_sec"
         let keychainwrapper: KeychainWrapper = KeychainWrapper.init(serviceName: serviceName)
         
         let keys = keychainwrapper.allKeys();
